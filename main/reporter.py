@@ -1,8 +1,27 @@
 import psutil 
 import datetime
+import tkinter as tk
 
-print(psutil.cpu_times().idle // 3600)
+import tkinter as tk
+
+root = tk.Tk()
+root.title("Disk / Uptime Monitor")
+lb = tk.Listbox(root)
+cpu_time = psutil.cpu_times().idle // 3600
+
+lb.insert(1, "CPU Time", cpu_time)
+lb.insert(2, "Java")
+lb.insert(3, "C++")
+lb.insert(4, "Any other")
+lb.pack()
+root.mainloop()
+
 
 print("CPU Statistics", psutil.cpu_stats().syscalls // 3600)
 
-print("Booted at", psutil.boot_time())
+boot = datetime.datetime.fromtimestamp(psutil.boot_time())
+uptime = datetime.datetime.now() - boot
+
+print(f"Booted at: {boot:%Y-%m-%d %H:%M}")
+print(f"Uptime: {uptime}")
+
