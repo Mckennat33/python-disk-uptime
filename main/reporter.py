@@ -9,7 +9,7 @@ cpu_time = psutil.cpu_times().idle // 3600
 
 boot = datetime.datetime.fromtimestamp(psutil.boot_time())
 uptime = datetime.datetime.now() - boot
-cpu_percentage = psutil.cpu_percent(interval=10)
+cpu_percentage = psutil.cpu_percent(interval=1)
 logical_core_count = psutil.cpu_count(logical=True)
 physical_core_count = psutil.cpu_count(logical=False)
 
