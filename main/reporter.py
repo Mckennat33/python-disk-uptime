@@ -4,6 +4,7 @@ import tkinter as tk
 
 root = tk.Tk()
 root.title("Disk / Uptime Monitor")
+root.geometry("500x400")
 lb = tk.Listbox(root)
 cpu_time = psutil.cpu_times().idle // 3600
 memory = psutil.virtual_memory()
@@ -54,5 +55,5 @@ lb.insert(9, f"Used: {used_ram:.1f}")
 lb.insert(10, f"Available Memory: {available_gb:.1f}")
 lb.insert(11, f"Used %: {used_perc:.1f}%")
 lb.insert(12, ram_usage())
-lb.pack()
+lb.pack(fill=tk.BOTH, expand=True)
 root.mainloop()
