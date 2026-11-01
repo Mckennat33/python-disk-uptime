@@ -1,6 +1,7 @@
-import psutil 
 import datetime
 import tkinter as tk
+
+import psutil
 
 root = tk.Tk()
 root.title("Disk / Uptime Monitor")
@@ -14,8 +15,8 @@ uptime = datetime.datetime.now() - boot
 cpu_percentage = psutil.cpu_percent(interval=1)
 logical_core_count = psutil.cpu_count(logical=True)
 physical_core_count = psutil.cpu_count(logical=False)
-total_gb = memory.total / (1024 ** 3)
-available_gb = memory.available / (1024 ** 3)
+total_gb = memory.total / (1024**3)
+available_gb = memory.available / (1024**3)
 used_ram = total_gb - available_gb
 used_perc = (used_ram / total_gb) * 100
 
@@ -39,13 +40,15 @@ lb.insert(4, f"CPU Usage: {cpu_percentage}%")
 lb.insert(5, f"Logical Core Count: {logical_core_count}")
 lb.insert(6, f"Physical Core Count: {physical_core_count}")
 
+
 def ram_usage():
     if used_perc >= 90:
-        return 'Critical above 90% usage'
+        return "Critical above 90% usage"
     elif used_perc >= 80:
-        return 'Warning above 80% usage'
+        return "Warning above 80% usage"
     else:
         return "Good to go"
+
 
 print(ram_usage())
 
